@@ -91,16 +91,18 @@ export default function Index() {
               className="mySwiper h-full"
             >
               <SwiperSlide>
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[250px] mx-auto"></div>
-                  <div className="relative bg-[#EADBAB] rounded-lg p-4 transform transition-transform group-hover:scale-105 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[250px] mx-auto">
-                    <img
-                      src="/술집슬라이드로고.png"
-                      alt="Sool.Zip 로고"
-                      className="w-full h-auto object-contain max-w-[280px] mx-auto"
-                    />
+                <Link to="/about">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px] mx-auto"></div>
+                    <div className="relative bg-[#EADBAB] rounded-lg p-4 transform transition-transform group-hover:scale-105 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px] mx-auto">
+                      <img
+                        src="/술집슬라이드로고.png"
+                        alt="Sool.Zip 로고"
+                        className="w-full h-auto object-contain max-w-[280px] mx-auto"
+                      />
+                    </div>
                   </div>
-                </div>
+                </Link>
               </SwiperSlide>
               {Object.entries(cocktails).map(([id, cocktail]) => (
                 <SwiperSlide key={id}>
