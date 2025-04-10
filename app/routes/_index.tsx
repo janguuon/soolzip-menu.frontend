@@ -75,8 +75,8 @@ const cocktails = {
 export default function Index() {
   return (
     <div className="bg-[#EADBBE]">
-      <div className="container mx-auto p-4 min-h-screen">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto p-4 min-h-screen flex items-center justify-center">
+        <div className="max-w-4xl w-full">
           <Swiper
             modules={[Pagination]}
             spaceBetween={30}
