@@ -25,12 +25,12 @@ export default function App() {
     <html lang="ko">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
         <title>칵테일 메뉴판</title>
       </head>
-      <body className="bg-teal-900 font-['Noto_Sans_KR']">
+      <body className="h-full bg-[#F5F5DC] font-['Noto_Sans_KR']">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
