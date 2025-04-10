@@ -4,7 +4,7 @@ import { useParams, Link } from "@remix-run/react";
 const cocktails = {
   "1": {
     name: "모히토",
-    image: "/모히또.jpg",
+    image: "/모히또.png",
     ingredients: [
       "화이트 럼 60ml",
       "라임 주스 30ml",
@@ -23,7 +23,7 @@ const cocktails = {
   },
   "2": {
     name: "마르가리타",
-    image: "/마르가리따.webp",
+    image: "/마르가리따.png",
     ingredients: [
       "테킬라 50ml",
       "트리플 섹 20ml",
@@ -41,7 +41,7 @@ const cocktails = {
   },
   "3": {
     name: "블루 하와이안",
-    image: "/블루하와이안.webp",
+    image: "/블루하와이안.png",
     ingredients: [
       "화이트 럼 30ml",
       "블루라소 30ml",
@@ -84,15 +84,15 @@ export default function CocktailDetail() {
       <div className="container mx-auto p-4 min-h-screen">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-amber-700 mb-4 tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] px-4 py-2 rounded-lg border-2 border-amber-900 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] wood-pattern">
+            <h1 className="text-3xl font-bold text-amber-100 mb-4 tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] px-4 py-2 rounded-lg border-2 border-amber-900 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] wood-pattern">
               {cocktailData.name}
             </h1>
-            <div className="aspect-square w-full max-w-md mx-auto border rounded-lg p-4 flex items-center justify-center bg-[#E6D5B8] overflow-hidden">
+            <div className="w-full max-w-[300px] mx-auto border rounded-lg p-4 flex items-center justify-center bg-[#E6D5B8] overflow-hidden">
               {cocktailData.image ? (
                 <img
                   src={cocktailData.image}
                   alt={cocktailData.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-contain"
                 />
               ) : (
                 <p className="text-gray-500">칵테일 이미지</p>
