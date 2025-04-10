@@ -24,3 +24,22 @@
     background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
     opacity: 0.3;
 }
+
+/* Swiper 스타일 */
+.swiper {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #78350f !important;
+}
+
+.swiper-pagination-bullet {
+    background: #78350f !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #78350f !important;
+}
