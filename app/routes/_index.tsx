@@ -47,7 +47,7 @@ export default function Index() {
                 )}
               </div>
               <div className="mt-2 text-center">
-                <p className="text-amber-100 font-medium text-lg tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] px-4 py-2 rounded-lg border-2 border-amber-900 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] wood-pattern">
+                <p className="text-amber-700 font-medium text-lg tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] px-4 py-2 rounded-lg border-2 border-amber-900 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] wood-pattern">
                   {cocktail.name}
                 </p>
               </div>
