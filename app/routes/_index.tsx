@@ -76,7 +76,7 @@ export default function Index() {
   return (
     <div className="bg-[#EADBBE]">
       <div className="container mx-auto p-4 min-h-screen flex items-center justify-center">
-        <div className="max-w-6xl w-full h-[600px] flex flex-col">
+        <div className="max-w-6xl w-full h-[540px] flex flex-col">
           <div className="flex-1">
             <Swiper
               modules={[Pagination]}
