@@ -87,16 +87,19 @@ export default function CocktailDetail() {
             <h1 className="text-3xl font-bold text-amber-800 mb-4 tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] px-4 py-2 rounded-lg border-2 border-amber-900 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] wood-pattern">
               {cocktailData.name}
             </h1>
-            <div className="w-full max-w-[300px] mx-auto border rounded-lg p-4 flex items-center justify-center bg-[#E6D5B8] overflow-hidden">
-              {cocktailData.image ? (
-                <img
-                  src={cocktailData.image}
-                  alt={cocktailData.name}
-                  className="w-full h-auto object-contain"
-                />
-              ) : (
-                <p className="text-gray-500">칵테일 이미지</p>
-              )}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[300px] mx-auto"></div>
+              <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[300px] mx-auto">
+                {cocktailData.image ? (
+                  <img
+                    src={cocktailData.image}
+                    alt={cocktailData.name}
+                    className="w-full h-auto object-contain max-w-[300px] mx-auto"
+                  />
+                ) : (
+                  <p className="text-gray-500">칵테일 이미지</p>
+                )}
+              </div>
             </div>
           </div>
 

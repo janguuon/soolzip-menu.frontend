@@ -91,12 +91,15 @@ export default function Index() {
               className="mySwiper h-full"
             >
               <SwiperSlide>
-                <div className="w-full max-w-[300px] mx-auto border rounded-lg p-4 flex items-center justify-center bg-[#E6D5B8] overflow-hidden">
-                  <img
-                    src="/술집슬라이드로고.png"
-                    alt="Sool.Zip 로고"
-                    className="w-full h-auto object-contain"
-                  />
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[250px] mx-auto"></div>
+                  <div className="relative bg-[#EADBAB] rounded-lg p-4 transform transition-transform group-hover:scale-105 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[250px] mx-auto">
+                    <img
+                      src="/술집슬라이드로고.png"
+                      alt="Sool.Zip 로고"
+                      className="w-full h-auto object-contain max-w-[280px] mx-auto"
+                    />
+                  </div>
                 </div>
               </SwiperSlide>
               {Object.entries(cocktails).map(([id, cocktail]) => (
@@ -105,18 +108,17 @@ export default function Index() {
                     to={`/cocktails/${id}`}
                     className="flex flex-col items-center hover:scale-105 transition-transform duration-200"
                   >
-                    <div className="w-full max-w-[300px] border rounded-lg p-4 flex items-center justify-center bg-[#E6D5B8] overflow-hidden">
-                      {cocktail.image ? (
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[250px] mx-auto"></div>
+                      <div className="relative bg-[#EADBAB] rounded-lg p-4 transform transition-transform group-hover:scale-105 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[250px] mx-auto">
                         <img
                           src={cocktail.image}
                           alt={cocktail.name}
-                          className="w-full h-auto object-contain"
+                          className="w-full h-auto object-contain max-w-[280px] mx-auto"
                         />
-                      ) : (
-                        <p className="text-gray-500">칵테일 이미지 {id}</p>
-                      )}
+                      </div>
                     </div>
-                    <div className="mt-2 text-center">
+                    <div className="mt-6 text-center">
                       <p className="text-amber-800 font-medium text-lg tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] px-4 py-2 rounded-lg border-2 border-amber-900 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] wood-pattern">
                         {cocktail.name}
                       </p>
