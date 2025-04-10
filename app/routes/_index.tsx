@@ -76,54 +76,56 @@ export default function Index() {
   return (
     <div className="bg-[#EADBBE]">
       <div className="container mx-auto p-4 min-h-screen flex items-center justify-center">
-        <div className="max-w-4xl w-full">
-          <Swiper
-            modules={[Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            breakpoints={{
-              640: {
-                slidesPerView: 2
-              }
-            }}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <div className="w-full max-w-[300px] mx-auto border rounded-lg p-4 flex items-center justify-center bg-[#E6D5B8] overflow-hidden">
-                <img
-                  src="/술집슬라이드로고.png"
-                  alt="Sool.Zip 로고"
-                  className="w-full h-auto object-contain"
-                />
-              </div>
-            </SwiperSlide>
-            {Object.entries(cocktails).map(([id, cocktail]) => (
-              <SwiperSlide key={id}>
-                <Link
-                  to={`/cocktails/${id}`}
-                  className="flex flex-col items-center hover:scale-105 transition-transform duration-200"
-                >
-                  <div className="w-full max-w-[300px] border rounded-lg p-4 flex items-center justify-center bg-[#E6D5B8] overflow-hidden">
-                    {cocktail.image ? (
-                      <img
-                        src={cocktail.image}
-                        alt={cocktail.name}
-                        className="w-full h-auto object-contain"
-                      />
-                    ) : (
-                      <p className="text-gray-500">칵테일 이미지 {id}</p>
-                    )}
-                  </div>
-                  <div className="mt-2 text-center">
-                    <p className="text-amber-100 font-medium text-lg tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] px-4 py-2 rounded-lg border-2 border-amber-900 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] wood-pattern">
-                      {cocktail.name}
-                    </p>
-                  </div>
-                </Link>
+        <div className="max-w-6xl w-full h-[600px] flex flex-col">
+          <div className="flex-1">
+            <Swiper
+              modules={[Pagination]}
+              spaceBetween={30}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2
+                }
+              }}
+              className="mySwiper h-full"
+            >
+              <SwiperSlide>
+                <div className="w-full max-w-[300px] mx-auto border rounded-lg p-4 flex items-center justify-center bg-[#E6D5B8] overflow-hidden">
+                  <img
+                    src="/술집슬라이드로고.png"
+                    alt="Sool.Zip 로고"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
               </SwiperSlide>
-            ))}
-          </Swiper>
+              {Object.entries(cocktails).map(([id, cocktail]) => (
+                <SwiperSlide key={id}>
+                  <Link
+                    to={`/cocktails/${id}`}
+                    className="flex flex-col items-center hover:scale-105 transition-transform duration-200"
+                  >
+                    <div className="w-full max-w-[300px] border rounded-lg p-4 flex items-center justify-center bg-[#E6D5B8] overflow-hidden">
+                      {cocktail.image ? (
+                        <img
+                          src={cocktail.image}
+                          alt={cocktail.name}
+                          className="w-full h-auto object-contain"
+                        />
+                      ) : (
+                        <p className="text-gray-500">칵테일 이미지 {id}</p>
+                      )}
+                    </div>
+                    <div className="mt-2 text-center">
+                      <p className="text-amber-100 font-medium text-lg tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] px-4 py-2 rounded-lg border-2 border-amber-900 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] wood-pattern">
+                        {cocktail.name}
+                      </p>
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>
