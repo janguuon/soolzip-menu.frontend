@@ -80,7 +80,7 @@ export default function CocktailDetail() {
   };
 
   return (
-    <div className="bg-[#F5F5DC]">
+    <div className="bg-[#EADBBE]">
       <div className="container mx-auto p-4 min-h-screen">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">

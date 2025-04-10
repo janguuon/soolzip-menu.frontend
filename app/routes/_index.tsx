@@ -17,7 +17,7 @@ const cocktails = {
 
 export default function Index() {
   return (
-    <div className="bg-[#F5F5DC]">
+    <div className="bg-[#EADBBE]">
       <div className="container mx-auto p-4 min-h-screen">
         <div className="text-center mb-1">
           <div className="w-auto h-auto flex items-center justify-center logo-container">

@@ -30,7 +30,7 @@ export default function App() {
         <Links />
         <title>칵테일 메뉴판</title>
       </head>
-      <body className="h-full bg-[#F5F5DC] font-['Noto_Sans_KR']">
+      <body className="h-full bg-[#EADBBE] font-['Noto_Sans_KR']">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
