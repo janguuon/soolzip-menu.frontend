@@ -74,14 +74,13 @@ const cocktails = {
 
 export default function Index() {
   return (
-    <div className="bg-[#F5F5DC]">
+    <div className="bg-[#EADBBE]">
       <div className="container mx-auto p-4 min-h-screen">
         <div className="max-w-4xl mx-auto">
           <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Pagination]}
             spaceBetween={30}
             slidesPerView={1}
-            navigation
             pagination={{ clickable: true }}
             breakpoints={{
               640: {
