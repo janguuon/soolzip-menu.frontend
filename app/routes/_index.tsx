@@ -1,9 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export const meta: MetaFunction = () => {
@@ -69,67 +68,144 @@ const cocktails = {
     ],
     description:
       "파란색이 인상적인 트로피컬 칵테일로, 달콤하고 부드러운 맛이 특징입니다. 파인애플과 코코넛의 풍미가 하와이의 정취를 느끼게 합니다."
+  },
+  "4": {
+    name: "갓파더",
+    image: "/갓파더.png",
+    ingredients: ["스카치 위스키 45ml", "아마레또 15ml", "얼음"],
+    instructions: [
+      "얼음을 채운 록스 글라스에 스카치 위스키를 넣습니다.",
+      "아마레또를 추가합니다.",
+      "가볍게 저어 섞어줍니다."
+    ],
+    description:
+      "스카치 위스키와 아마레또의 조화가 특징인 클래식 칵테일입니다. 부드럽고 달콤한 맛이 인상적입니다."
+  },
+  "5": {
+    name: "우우",
+    image: "/우우.png",
+    ingredients: [
+      "보드카 30ml",
+      "말리부 30ml",
+      "크랜베리 주스 60ml",
+      "라임 주스 15ml"
+    ],
+    instructions: [
+      "셰이커에 모든 재료를 넣습니다.",
+      "얼음을 추가하고 잘 흔들어줍니다.",
+      "얼음을 채운 글라스에 스트레이너를 사용해 부어줍니다."
+    ],
+    description:
+      "상큼한 크랜베리와 코코넛의 달콤한 맛이 어우러진 칵테일입니다. 부드럽고 달콤한 맛이 특징입니다."
+  },
+  "6": {
+    name: "하이볼",
+    image: "/하이볼.png",
+    ingredients: ["위스키 45ml", "소다수 적당량", "레몬 슬라이스", "얼음"],
+    instructions: [
+      "얼음을 채운 하이볼 글라스에 위스키를 넣습니다.",
+      "소다수로 채웁니다.",
+      "레몬 슬라이스로 장식합니다."
+    ],
+    description:
+      "위스키와 소다수의 조화가 특징인 클래식 칵테일입니다. 깔끔하고 상쾌한 맛이 인상적입니다."
+  },
+  "7": {
+    name: "오르가즘",
+    image: "/오르가즘.png",
+    ingredients: [
+      "보드카 30ml",
+      "아마레또 15ml",
+      "트리플 섹 15ml",
+      "오렌지 주스 30ml"
+    ],
+    instructions: [
+      "셰이커에 모든 재료를 넣습니다.",
+      "얼음을 추가하고 잘 흔들어줍니다.",
+      "얼음을 채운 글라스에 스트레이너를 사용해 부어줍니다."
+    ],
+    description:
+      "달콤하고 과일향이 풍부한 칵테일입니다. 부드러운 맛과 향이 특징입니다."
+  },
+  "8": {
+    name: "깔루아 밀크",
+    image: "/깔루아밀크.png",
+    ingredients: ["깔루아 45ml", "우유 90ml", "얼음"],
+    instructions: [
+      "얼음을 채운 글라스에 깔루아를 넣습니다.",
+      "우유를 추가합니다.",
+      "가볍게 저어 섞어줍니다."
+    ],
+    description:
+      "깔루아와 우유의 부드러운 조화가 특징인 칵테일입니다. 달콤하고 크리미한 맛이 인상적입니다."
+  },
+  "9": {
+    name: "블랙 러시안",
+    image: "/블랙러시안.png",
+    ingredients: ["보드카 45ml", "깔루아 15ml", "얼음"],
+    instructions: [
+      "얼음을 채운 글라스에 보드카를 넣습니다.",
+      "깔루아를 추가합니다.",
+      "가볍게 저어 섞어줍니다."
+    ],
+    description:
+      "보드카와 깔루아의 조화가 특징인 클래식 칵테일입니다. 강렬하고 달콤한 맛이 인상적입니다."
   }
 };
 
 export default function Index() {
   return (
-    <div className="bg-[#EADBBE]">
+    <div className="bg-[#EADBBE] min-h-screen">
       <div className="container mx-auto p-4 min-h-screen flex items-center justify-center">
-        <div className="max-w-6xl w-full h-[540px] flex flex-col">
-          <div className="flex-1">
-            <Swiper
-              modules={[Pagination]}
-              spaceBetween={30}
-              slidesPerView={1}
-              pagination={{ clickable: true }}
-              breakpoints={{
-                640: {
-                  slidesPerView: 2
-                }
-              }}
-              className="mySwiper h-full"
-            >
-              <SwiperSlide>
-                <Link to="/about">
+        <div className="max-w-4xl w-full">
+          <Swiper
+            modules={[Pagination]}
+            pagination={{ clickable: true }}
+            spaceBetween={30}
+            slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 2
+              }
+            }}
+            className="my-8 h-[600px]"
+          >
+            <SwiperSlide>
+              <Link to="/about">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px] mx-auto"></div>
+                  <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px] mx-auto">
+                    <img
+                      src="/술집슬라이드로고.png"
+                      alt="Sool.Zip 로고"
+                      className="w-full h-auto object-contain max-w-[280px] mx-auto"
+                    />
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
+            {Object.entries(cocktails).map(([id, cocktail]) => (
+              <SwiperSlide key={id}>
+                <Link to={`/cocktails/${id}`}>
                   <div className="relative group">
                     <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px] mx-auto"></div>
-                    <div className="relative bg-[#EADBAB] rounded-lg p-4 transform transition-transform group-hover:scale-105 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px] mx-auto">
+                    <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px] mx-auto">
                       <img
-                        src="/술집슬라이드로고.png"
-                        alt="Sool.Zip 로고"
+                        src={cocktail.image}
+                        alt={cocktail.name}
                         className="w-full h-auto object-contain max-w-[280px] mx-auto"
                       />
+                      <div className="mt-4 text-center">
+                        <h2 className="text-xl font-bold text-amber-100">
+                          {cocktail.name}
+                        </h2>
+                      </div>
                     </div>
                   </div>
                 </Link>
               </SwiperSlide>
-              {Object.entries(cocktails).map(([id, cocktail]) => (
-                <SwiperSlide key={id}>
-                  <Link
-                    to={`/cocktails/${id}`}
-                    className="flex flex-col items-center hover:scale-105 transition-transform duration-200"
-                  >
-                    <div className="relative group">
-                      <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[250px] mx-auto"></div>
-                      <div className="relative bg-[#EADBAB] rounded-lg p-4 transform transition-transform group-hover:scale-105 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[250px] mx-auto">
-                        <img
-                          src={cocktail.image}
-                          alt={cocktail.name}
-                          className="w-full h-auto object-contain max-w-[280px] mx-auto"
-                        />
-                      </div>
-                    </div>
-                    <div className="mt-6 text-center">
-                      <p className="text-amber-800 font-medium text-lg tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] px-4 py-2 rounded-lg border-2 border-amber-900 shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] wood-pattern">
-                        {cocktail.name}
-                      </p>
-                    </div>
-                  </Link>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+            ))}
+          </Swiper>
         </div>
       </div>
     </div>
