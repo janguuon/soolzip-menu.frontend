@@ -161,6 +161,7 @@ export default function Index() {
       { action: "add", id, name, price: price.toString() },
       { method: "post", action: "/cart" }
     );
+    alert("추가 완료");
   };
 
   return (
