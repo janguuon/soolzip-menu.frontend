@@ -220,12 +220,20 @@ export default function Index() {
                       <h2 className="text-xl font-bold text-amber-800">
                         {cocktail.name}
                       </h2>
-                      <button
-                        onClick={() => addToCart(id, cocktail.name, 15000)}
-                        className="px-3 py-1 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors text-sm"
-                      >
-                        주문
-                      </button>
+                      <div className="flex space-x-2">
+                        <button
+                          onClick={() => addToCart(id, cocktail.name, 15000)}
+                          className="px-3 py-1 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors text-sm"
+                        >
+                          주문
+                        </button>
+                        <Link
+                          to={`/cocktails/${id}`}
+                          className="px-3 py-1 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors text-sm"
+                        >
+                          상세정보
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
