@@ -223,7 +223,7 @@ export default function Index() {
                         onClick={() => addToCart(id, cocktail.name, 15000)}
                         className="px-3 py-1 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors text-sm"
                       >
-                        추가
+                        주문
                       </button>
                     </div>
                   </div>
