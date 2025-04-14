@@ -155,57 +155,69 @@ const cocktails = {
 
 export default function Index() {
   return (
-    <div className="bg-[#EADBBE] min-h-screen">
-      <div className="container mx-auto p-4 min-h-screen flex items-center justify-center">
-        <div className="max-w-4xl w-full">
-          <Swiper
-            modules={[Pagination]}
-            pagination={{ clickable: true }}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              640: {
-                slidesPerView: 2
-              }
-            }}
-            className="my-8 h-[600px]"
-          >
-            <SwiperSlide>
-              <Link to="/about">
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px] mx-auto"></div>
-                  <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px] mx-auto">
-                    <img
-                      src="/술집슬라이드로고.png"
-                      alt="Sool.Zip 로고"
-                      className="w-full h-auto object-contain max-w-[280px] mx-auto"
-                    />
-                  </div>
-                </div>
-              </Link>
-            </SwiperSlide>
-            {Object.entries(cocktails).map(([id, cocktail]) => (
-              <SwiperSlide key={id}>
-                <Link to={`/cocktails/${id}`}>
+    <div className="min-h-screen bg-[#1a1a1a]">
+      {/* 장바구니 버튼 */}
+      <div className="fixed top-4 right-4 z-50">
+        <Link
+          to="/cart"
+          className="px-4 py-2 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors"
+        >
+          장바구니
+        </Link>
+      </div>
+
+      <div className="bg-[#EADBBE] min-h-screen">
+        <div className="container mx-auto p-4 min-h-screen flex items-center justify-center">
+          <div className="max-w-4xl w-full">
+            <Swiper
+              modules={[Pagination]}
+              pagination={{ clickable: true }}
+              spaceBetween={30}
+              slidesPerView={1}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2
+                }
+              }}
+              className="my-8 h-[600px]"
+            >
+              <SwiperSlide>
+                <Link to="/about">
                   <div className="relative group">
                     <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px] mx-auto"></div>
                     <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px] mx-auto">
                       <img
-                        src={cocktail.image}
-                        alt={cocktail.name}
+                        src="/술집슬라이드로고.png"
+                        alt="Sool.Zip 로고"
                         className="w-full h-auto object-contain max-w-[280px] mx-auto"
                       />
-                      <div className="mt-4 text-center">
-                        <h2 className="text-xl font-bold text-amber-800">
-                          {cocktail.name}
-                        </h2>
-                      </div>
                     </div>
                   </div>
                 </Link>
               </SwiperSlide>
-            ))}
-          </Swiper>
+              {Object.entries(cocktails).map(([id, cocktail]) => (
+                <SwiperSlide key={id}>
+                  <Link to={`/cocktails/${id}`}>
+                    <div className="relative group">
+                      <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px] mx-auto"></div>
+                      <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px] mx-auto">
+                        <img
+                          src={cocktail.image}
+                          alt={cocktail.name}
+                          className="w-full h-auto object-contain max-w-[280px] mx-auto"
+                        />
+                        <div className="mt-4 text-center">
+                          <h2 className="text-xl font-bold text-amber-800">
+                            {cocktail.name}
+                          </h2>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>
