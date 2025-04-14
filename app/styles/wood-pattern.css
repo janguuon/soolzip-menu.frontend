@@ -30,7 +30,11 @@
 /* Swiper 스타일 */
 .swiper {
     width: 100%;
-    padding: 0 0 50px 0;
+    padding: 0 0 10px 0;
+}
+
+.swiper-pagination {
+    bottom: 80px !important;
 }
 
 .swiper-button-next,
@@ -39,11 +43,9 @@
 }
 
 .swiper-pagination-bullet {
-    background: #8B4513;
-    opacity: 0.5;
+    background: #78350f !important;
 }
 
 .swiper-pagination-bullet-active {
-    background: #8B4513;
-    opacity: 1;
+    background: #78350f !important;
 }
