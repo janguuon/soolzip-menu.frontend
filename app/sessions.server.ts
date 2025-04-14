@@ -1,7 +1,20 @@
 import { createCookieSessionStorage } from "@remix-run/node";
 
+type SessionData = {
+  orders: Array<{
+    id: string;
+    name: string;
+    price: number;
+    quantity: number;
+  }>;
+};
+
+type SessionFlashData = {
+  error: string;
+};
+
 export const { getSession, commitSession, destroySession } =
-  createCookieSessionStorage({
+  createCookieSessionStorage<SessionData, SessionFlashData>({
     cookie: {
       name: "__session",
       secrets: ["s3cr3t"],

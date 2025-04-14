@@ -1,12 +1,18 @@
-import type { MetaFunction } from "@remix-run/node";
+import type {
+  ActionFunctionArgs,
+  LoaderFunctionArgs,
+  MetaFunction
+} from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { Link, useLoaderData, useFetcher } from "@remix-run/react";
+import { getSession, commitSession } from "~/sessions.server";
 
-interface Order {
+type Order = {
   id: string;
   name: string;
   price: number;
   quantity: number;
-}
+};
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,8 +21,94 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  try {
+    const session = await getSession(request.headers.get("Cookie"));
+    const orders = session.get("orders") as Order[] | undefined;
+    return json({ orders: Array.isArray(orders) ? orders : [] });
+  } catch (error) {
+    return json({ orders: [] });
+  }
+}
+
+export async function action({ request }: ActionFunctionArgs) {
+  const session = await getSession(request.headers.get("Cookie"));
+  const formData = await request.formData();
+  const action = formData.get("action");
+
+  if (action === "add") {
+    const id = formData.get("id") as string;
+    const name = formData.get("name") as string;
+    const price = parseInt(formData.get("price") as string);
+
+    if (!id || !name || !price) {
+      return json({ error: "필수 정보가 누락되었습니다." }, { status: 400 });
+    }
+
+    const orders = (session.get("orders") as Order[] | undefined) || [];
+    const existingOrder = orders.find((order) => order.id === id);
+
+    if (existingOrder) {
+      existingOrder.quantity += 1;
+    } else {
+      orders.push({
+        id,
+        name,
+        price,
+        quantity: 1
+      });
+    }
+
+    session.set("orders", orders);
+    return json(
+      { success: true },
+      { headers: { "Set-Cookie": await commitSession(session) } }
+    );
+  }
+
+  if (action === "update") {
+    const id = formData.get("id") as string;
+    const quantity = parseInt(formData.get("quantity") as string);
+
+    if (!id || !quantity) {
+      return json({ error: "필수 정보가 누락되었습니다." }, { status: 400 });
+    }
+
+    const orders = (session.get("orders") as Order[] | undefined) || [];
+    const order = orders.find((order) => order.id === id);
+
+    if (order) {
+      order.quantity = quantity;
+      session.set("orders", orders);
+      return json(
+        { success: true },
+        { headers: { "Set-Cookie": await commitSession(session) } }
+      );
+    }
+  }
+
+  if (action === "remove") {
+    const id = formData.get("id") as string;
+
+    if (!id) {
+      return json({ error: "필수 정보가 누락되었습니다." }, { status: 400 });
+    }
+
+    const orders = (session.get("orders") as Order[] | undefined) || [];
+    const filteredOrders = orders.filter((order) => order.id !== id);
+    session.set("orders", filteredOrders);
+
+    return json(
+      { success: true },
+      { headers: { "Set-Cookie": await commitSession(session) } }
+    );
+  }
+
+  return json({ error: "잘못된 요청입니다." }, { status: 400 });
+}
+
 export default function Cart() {
-  const data = useLoaderData<{ orders: Order[] }>();
+  const data = useLoaderData<typeof loader>();
   const orders = Array.isArray(data?.orders) ? data.orders : [];
   const fetcher = useFetcher();
 
