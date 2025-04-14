@@ -196,7 +196,7 @@ export default function Index() {
                         className="w-full h-auto object-contain max-w-[280px] mx-auto"
                       />
                       <div className="mt-4 text-center">
-                        <h2 className="text-xl font-bold text-amber-100">
+                        <h2 className="text-xl font-bold text-amber-800">
                           {cocktail.name}
                         </h2>
                       </div>

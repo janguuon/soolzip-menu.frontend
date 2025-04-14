@@ -204,11 +204,9 @@ export default function CocktailDetail() {
                   d="M10 19l-7-7m0 0l7-7m-7 7h18"
                 />
               </svg>
-              메뉴로 돌아가기
+              돌아가기
             </Link>
-            <h1 className="text-4xl font-bold text-gray-800">
-              칵테일 상세 정보
-            </h1>
+            <h1 className="text-4xl font-bold text-gray-800">상세 정보</h1>
           </div>
 
           <div className="bg-white/40 p-6 rounded-lg">
