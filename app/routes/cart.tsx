@@ -4,8 +4,9 @@ import type {
   MetaFunction
 } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { Link, useLoaderData, useFetcher } from "@remix-run/react";
+import { Link, useLoaderData, useFetcher, useNavigate } from "@remix-run/react";
 import { getSession, commitSession } from "~/sessions.server";
+import { useState } from "react";
 
 type Order = {
   id: string;
@@ -104,13 +105,22 @@ export async function action({ request }: ActionFunctionArgs) {
     );
   }
 
+  if (action === "clear") {
+    session.set("orders", []);
+    return json(
+      { success: true },
+      { headers: { "Set-Cookie": await commitSession(session) } }
+    );
+  }
+
   return json({ error: "잘못된 요청입니다." }, { status: 400 });
 }
 
 export default function Cart() {
-  const data = useLoaderData<typeof loader>();
-  const orders = Array.isArray(data?.orders) ? data.orders : [];
+  const { orders } = useLoaderData<typeof loader>();
   const fetcher = useFetcher();
+  const navigate = useNavigate();
+  const [isOrdering, setIsOrdering] = useState(false);
 
   const totalPrice = orders.reduce(
     (sum: number, order: Order) => sum + order.price * order.quantity,
@@ -129,9 +139,55 @@ export default function Cart() {
     fetcher.submit({ action: "remove", id }, { method: "post" });
   };
 
-  const placeOrder = () => {
-    // 주문 처리 로직
-    alert("주문이 완료되었습니다!");
+  const placeOrder = async () => {
+    try {
+      setIsOrdering(true);
+      console.log("주문 데이터 전송 시작:", orders);
+
+      const response = await fetch("http://localhost:8000/api/orders/place", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          orders: orders.map((order) => ({
+            id: order.id,
+            name: order.name,
+            price: order.price,
+            quantity: order.quantity
+          }))
+        })
+      });
+
+      console.log("서버 응답:", response);
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "서버 오류가 발생했습니다.");
+      }
+
+      const data = await response.json();
+      console.log("주문 처리 결과:", data);
+
+      // 주문 성공 후 장바구니 비우기
+      fetcher.submit({ action: "clear" }, { method: "post" });
+
+      // 주문 완료 알림
+      alert("주문이 완료되었습니다!");
+
+      // 메뉴 페이지로 리다이렉트
+      navigate("/");
+    } catch (error) {
+      console.error("주문 처리 중 오류:", error);
+      alert(
+        error instanceof Error
+          ? error.message
+          : "주문 처리 중 오류가 발생했습니다."
+      );
+    } finally {
+      setIsOrdering(false);
+    }
   };
 
   return (
@@ -210,8 +266,9 @@ export default function Cart() {
               <button
                 className="mt-4 w-full px-4 py-2 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors"
                 onClick={placeOrder}
+                disabled={isOrdering}
               >
-                주문하기
+                {isOrdering ? "주문 처리 중..." : "주문하기"}
               </button>
             </div>
           </>
