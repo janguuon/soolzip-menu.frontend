@@ -121,6 +121,7 @@ export default function Cart() {
   const fetcher = useFetcher();
   const navigate = useNavigate();
   const [isOrdering, setIsOrdering] = useState(false);
+  const [customerName, setCustomerName] = useState("");
 
   const totalPrice = orders.reduce(
     (sum: number, order: Order) => sum + order.price * order.quantity,
@@ -140,24 +141,28 @@ export default function Cart() {
   };
 
   const placeOrder = async () => {
+    if (!customerName.trim()) {
+      alert("주문자 이름을 입력해주세요.");
+      return;
+    }
+
     try {
       setIsOrdering(true);
       console.log("주문 데이터 전송 시작:", orders);
 
       const response = await fetch("http://localhost:8000/api/orders/place", {
         method: "POST",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          orders: orders.map((order) => ({
-            id: order.id,
+        body: JSON.stringify(
+          orders.map((order) => ({
             name: order.name,
             price: order.price,
-            quantity: order.quantity
+            quantity: order.quantity,
+            customerName: customerName.trim()
           }))
-        })
+        )
       });
 
       console.log("서버 응답:", response);
@@ -207,6 +212,23 @@ export default function Cart() {
           </div>
         ) : (
           <>
+            <div className="mb-6">
+              <label
+                htmlFor="customerName"
+                className="block text-amber-800 font-medium mb-2"
+              >
+                주문자 이름
+              </label>
+              <input
+                type="text"
+                id="customerName"
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
+                placeholder="주문자 이름을 입력해주세요"
+                className="w-full px-4 py-2 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+
             <div className="space-y-4">
               {orders.map((order) => (
                 <div
