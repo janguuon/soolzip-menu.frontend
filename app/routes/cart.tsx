@@ -150,20 +150,23 @@ export default function Cart() {
       setIsOrdering(true);
       console.log("주문 데이터 전송 시작:", orders);
 
-      const response = await fetch("http://localhost:8000/api/orders/place", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(
-          orders.map((order) => ({
-            name: order.name,
-            price: order.price,
-            quantity: order.quantity,
-            customerName: customerName.trim()
-          }))
-        )
-      });
+      const response = await fetch(
+        "https://soolzip-menu-backend.onrender.com/api/orders/place",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(
+            orders.map((order) => ({
+              name: order.name,
+              price: order.price,
+              quantity: order.quantity,
+              customerName: customerName.trim()
+            }))
+          )
+        }
+      );
 
       console.log("서버 응답:", response);
 
