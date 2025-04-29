@@ -1,9 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link, useFetcher } from "@remix-run/react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 
 export const meta: MetaFunction = () => {
   return [
@@ -187,70 +183,60 @@ export default function Index() {
         </Link>
       </div>
 
-      <div className="container mx-auto p-4 min-h-screen flex items-center justify-center">
-        <div className="max-w-4xl w-full">
-          <Swiper
-            modules={[Pagination]}
-            pagination={{ clickable: true }}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              640: {
-                slidesPerView: 2
-              }
-            }}
-            className="my-8 h-[600px]"
-          >
-            <SwiperSlide>
-              <Link to="/about">
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px] mx-auto"></div>
-                  <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px] mx-auto">
-                    <img
-                      src="/술집슬라이드로고.png"
-                      alt="Sool.Zip 로고"
-                      className="w-full h-auto object-contain max-w-[280px] mx-auto"
-                    />
-                  </div>
+      <div className="container mx-auto p-4 min-h-screen flex justify-center">
+        <div className="w-full max-w-2xl flex flex-col items-center">
+          {/* 로고 */}
+          <div className="mb-8">
+            <Link to="/about">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px]"></div>
+                <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px]">
+                  <img
+                    src="/술집슬라이드로고.png"
+                    alt="Sool.Zip 로고"
+                    className="w-full h-auto object-contain max-w-[280px]"
+                  />
                 </div>
-              </Link>
-            </SwiperSlide>
+              </div>
+            </Link>
+          </div>
+
+          {/* 메뉴 그리드 */}
+          <div className="grid grid-cols-2 gap-4 w-full">
             {Object.entries(cocktails).map(([id, cocktail]) => (
-              <SwiperSlide key={id}>
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px] mx-auto"></div>
-                  <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px] mx-auto">
-                    <Link to={`/cocktails/${id}`}>
-                      <img
-                        src={cocktail.image}
-                        alt={cocktail.name}
-                        className="w-full h-auto object-contain max-w-[280px] mx-auto"
-                      />
-                    </Link>
-                    <div className="mt-4 flex items-center justify-between">
-                      <h2 className="text-xl font-bold text-amber-800">
-                        {cocktail.name}
-                      </h2>
-                      <div className="flex space-x-2">
-                        <button
-                          onClick={() => addToCart(id, cocktail.name, 15000)}
-                          className="px-3 py-1 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors text-sm"
-                        >
-                          주문
-                        </button>
-                        <Link
-                          to={`/cocktails/${id}`}
-                          className="px-3 py-1 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors text-sm"
-                        >
-                          상세정보
-                        </Link>
-                      </div>
+              <div key={id} className="relative group flex justify-center">
+                <div className="absolute inset-0 bg-amber-900 rounded-lg transform translate-x-2 translate-y-2 max-w-[280px]"></div>
+                <div className="relative bg-[#EADBAB] rounded-lg p-4 transform shadow-[4px_4px_0px_0px_rgba(139,69,19,0.3)] max-w-[280px]">
+                  <Link to={`/cocktails/${id}`}>
+                    <img
+                      src={cocktail.image}
+                      alt={cocktail.name}
+                      className="w-full h-auto object-contain max-w-[280px]"
+                    />
+                  </Link>
+                  <div className="mt-4 flex items-center justify-between">
+                    <h2 className="text-xl font-bold text-amber-800">
+                      {cocktail.name}
+                    </h2>
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => addToCart(id, cocktail.name, 15000)}
+                        className="px-3 py-1 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors text-sm"
+                      >
+                        주문
+                      </button>
+                      <Link
+                        to={`/cocktails/${id}`}
+                        className="px-3 py-1 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors text-sm"
+                      >
+                        상세정보
+                      </Link>
                     </div>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       </div>
     </div>
