@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
-export default {
-  content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
+const config: Config = {
+  content: ["./app/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -13,10 +13,15 @@ export default {
           "Apple Color Emoji",
           "Segoe UI Emoji",
           "Segoe UI Symbol",
-          "Noto Color Emoji",
-        ],
+          "Noto Color Emoji"
+        ]
       },
-    },
+      fontSize: {
+        fluid: "clamp(0.65rem, 1.5vw, 1.1rem)"
+      }
+    }
   },
-  plugins: [],
-} satisfies Config;
+  plugins: []
+};
+
+export default config;
