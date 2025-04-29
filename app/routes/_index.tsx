@@ -214,8 +214,8 @@ export default function Index() {
                       className="w-full h-auto object-contain max-w-[280px]"
                     />
                   </Link>
-                  <div className="mt-4 flex items-center justify-between">
-                    <h2 className="text-fluid font-bold text-amber-800 max-w-[120px]">
+                  <div className="mt-4 flex flex-col items-center space-y-2">
+                    <h2 className="text-fluid font-bold text-amber-800 text-center">
                       {cocktail.name}
                     </h2>
                     <div className="flex space-x-2">
