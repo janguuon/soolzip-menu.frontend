@@ -177,7 +177,7 @@ export default function Index() {
       <div className="fixed top-4 right-4 z-50">
         <Link
           to="/cart"
-          className="px-4 py-2 bg-amber-100 text-[#1a1a1a] rounded-lg hover:bg-amber-200 transition-colors"
+          className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
         >
           장바구니
         </Link>
