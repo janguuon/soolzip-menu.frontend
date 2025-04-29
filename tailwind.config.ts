@@ -17,7 +17,8 @@ const config: Config = {
         ]
       },
       fontSize: {
-        fluid: "clamp(0.65rem, 1.5vw, 1.1rem)"
+        fluid: "clamp(0.65rem, 1.5vw, 1.1rem)",
+        "btn-fluid": "clamp(0.6rem, 1.2vw, 0.9rem)"
       }
     }
   },
