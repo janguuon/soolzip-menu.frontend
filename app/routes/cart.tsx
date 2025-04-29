@@ -6,7 +6,7 @@ import type {
 import { json } from "@remix-run/node";
 import { Link, useLoaderData, useFetcher, useNavigate } from "@remix-run/react";
 import { getSession, commitSession } from "~/sessions.server";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Order = {
   id: string;
@@ -123,6 +123,21 @@ export default function Cart() {
   const [isOrdering, setIsOrdering] = useState(false);
   const [customerName, setCustomerName] = useState("");
 
+  // localStorage에서 주문자 이름 불러오기
+  useEffect(() => {
+    const savedName = localStorage.getItem("customerName");
+    if (savedName) {
+      setCustomerName(savedName);
+    }
+  }, []);
+
+  // 주문자 이름이 변경될 때마다 localStorage에 저장
+  const handleCustomerNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = e.target.value;
+    setCustomerName(newName);
+    localStorage.setItem("customerName", newName);
+  };
+
   const totalPrice = orders.reduce(
     (sum: number, order: Order) => sum + order.price * order.quantity,
     0
@@ -226,7 +241,7 @@ export default function Cart() {
                 type="text"
                 id="customerName"
                 value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
+                onChange={handleCustomerNameChange}
                 placeholder="주문자 이름을 입력해주세요"
                 className="w-full px-4 py-2 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
               />
