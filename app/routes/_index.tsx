@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link, useFetcher } from "@remix-run/react";
-import cocktails from "/vercel/path0/menu.json";
+import cocktails from "../../menu.json"; //"/vercel/path0/menu.json";
 
 export const meta: MetaFunction = () => {
   return [
