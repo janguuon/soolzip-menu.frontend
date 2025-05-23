@@ -1,0 +1,20 @@
+{
+  "margarita": {
+    "name": "마가리타",
+    "image": "/cocktails/margarita.jpg",
+    "description": "테킬라 기반의 클래식 칵테일",
+    "price": 15000
+  },
+  "mojito": {
+    "name": "모히또",
+    "image": "/cocktails/mojito.jpg",
+    "description": "민트와 라임이 어우러진 상쾌한 칵테일",
+    "price": 15000
+  },
+  "old-fashioned": {
+    "name": "올드 패션드",
+    "image": "/cocktails/old-fashioned.jpg",
+    "description": "위스키 기반의 클래식 칵테일",
+    "price": 15000
+  }
+}
